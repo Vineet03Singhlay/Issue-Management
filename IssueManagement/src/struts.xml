@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+<struts>  
+<package name="default" extends="struts-default">  
+        
+        <action name="getDropdownChild" class="com.action.dropdown.DropdownChildAction" method="getDropdownChild">
+         </action>
+        
+        <action name="getDropdownParent" class="com.action.dropdown.DropdownParentAction" method="getDropdownParent">
+        </action>
+        
+        <action name="getIssueTransact" class="com.action.searchIssue.SearchIssueAction" method="getIssueTransact">
+        </action>
+        
+        <action name="getProduct" class="com.action.product.ProductAction" method="getProduct">
+        </action>
+  		
+  		<action name="getProductSupplierMap" class="com.action.common.ProductSupplierMapAction" method="getProductSupplierMap">
+  		</action>
+  		
+  		<action name="getSupplier" class="com.action.supplier.SupplierAction" method="getSupplier">
+  		</action>
+  		
+  		<action name="getLocation" class="com.action.location.LocationAction" method="getLocation">
+  		</action>
+  		
+  		<action name="getLocationType" class="com.action.location.LocationTypeAction" method="getLocationType">
+  		</action>
+  		
+  		<action name="getIssueType" class="com.action.dropdown.DropdownChildAction" method="getIssueType">
+  		</action>
+  		
+  		<action name="getIssueSubtype" class="com.action.dropdown.DropdownChildAction" method="getIssueSubtype">
+  		</action>
+  		
+  		<action name="getHowReceived" class="com.action.dropdown.DropdownChildAction" method="getHowReceived">
+  		</action>
+  		
+  		<action name="getCondition" class="com.action.dropdown.DropdownChildAction" method="getCondition">
+  		</action>
+  		
+  		<action name="getDurationUnit" class="com.action.dropdown.DropdownChildAction" method="getDurationUnit">
+  		</action>
+  		
+  		<action name="createIssue" class="com.action.createIssue.CreateIssueAction" method="createIssue">
+  		</action>
+  		
+  		<action name="getIssueListWithValues" class="com.action.viewIssue.ViewIssueAction" method="getIssueListWithValues">
+ 		</action>
+ 		
+ 		<action name="addResponse" class="com.action.viewIssue.ResponseInfoAction" method="addResponse">
+ 		</action>
+ 		
+ 		<action name="getResponse" class="com.action.viewIssue.ResponseInfoAction" method="getResponse">
+  		</action>
+</package>  
+</struts>

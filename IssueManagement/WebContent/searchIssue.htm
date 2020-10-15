@@ -1,0 +1,229 @@
+		
+		<!-- second line header start -->
+		<div class="w3-container w3-green">
+			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
+				<a href="#!home" >
+					<button class="w3-button fa fa-home w3-large"></button>
+				</a>
+			</div>
+			<div class="vl w3-left" style="height:52px; color:#ccc"></div>
+			<div class="w3-left w3-margin-top w3-margin-bottom" style="padding-left:4px;">
+				<h5 style="font-weight:bold">Search Issue</h5>
+			</div>
+
+			<div class="w3-right w3-margin-top w3-margin-left w3-margin-bottom">
+				<button class="w3-button w3-green w3-hover-shadow fa fa-mail-reply">&nbsp;Back</button>
+			</div>
+			<div class="vl w3-right" style="height:52px; color:#ccc"></div>
+			<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom" style="margin-top:14px;">
+				<a href="#!createIssue" >
+					<button class="w3-button w3-yellow w3-hover-shadow w3-round-large">Create Issue</button>
+				</a>
+			</div>
+			
+		</div>
+		<!-- second line header end -->
+		
+		<div class="w3-container ">
+			
+			<div class="w3-left w3-margin-left w3-margin-top w3-margin-bottom">
+				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue w3-round-medium">Filter Results<h5 class="fa fa-chevron-down"></h5></button>
+			</div>
+			
+			<!-- modal-start -->
+			
+			<div id="id01" class="w3-modal">
+				<div class="w3-modal-content w3-card-4 w3-animate-zoom">
+
+					<div class="w3-center"><br>
+						<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-medium w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+					</div>
+					<hr class="w3-margin-left w3-margin-right">
+					<div class="w3-container" >
+						<div class="w3-left w3-border-right w3-margin-bottom" style="width:75%;">
+							<form class="w3-container" action="">
+								<div class="w3-row">
+									<div class="w3-third">
+										<label>Issue ID</label>
+										<input type="text" class="w3-input w3-border w3-margin-bottom" style="width:80%;" ng-model="issueIDName">
+									</div>
+									<div class="w3-third">
+										<label>Issue Type</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueTypeOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in issueTypeValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Issue Subtype</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueSubtypeOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in issueSubtypeValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="w3-row">
+									<div class="w3-third">
+										<label>Location Type</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="locationTypeOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in locationTypeValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Location Name</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="locationNameOption">
+											<option value="" disabled selected></option>
+											<option ng-repeat="x in locationNameValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Justified?</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="justifiedOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in justifiedValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="w3-row">
+									<div class="w3-third">
+										<label>product#</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="productOption">
+											<option value="" disabled selected></option>
+											<option ng-repeat="x in productValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Supplier#</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="supplierOption">
+											<option value="" disabled selected></option>
+											<option ng-repeat="x in supplierValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Issue Status</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueStatusOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in issueStatusValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="w3-row">
+									<div class="w3-third">
+										<label>Responsible Party</label>
+										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="responsiblePartyOption">
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="x in responsiblePartyValue" value="{{x}}">{{x}}</option>
+										</select>
+									</div>
+									<div class="w3-third">
+										<label>Issue Date</label>
+										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;">
+									</div>
+									<div class="w3-third">
+										<label>Issue Closed Date</label>
+										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;">
+									</div>
+								</div>
+								<hr class="w3-margin-left w3-margin-right">
+								<button class="w3-button w3-right w3-margin-left w3-blue w3-hover-shadow w3-round">Search</button>
+								<button class="w3-button w3-right w3-margin-left w3-round">Reset</button>
+								<div class="vl w3-right w3-margin-left" style="height:40px; color:#eee;"></div>
+								<button class="w3-button w3-right w3-blue w3-hover-shadow w3-round">Save Search</button>
+							</form>
+							
+						</div>
+						
+						<div class="w3-right w3-container" style="width:25%;">
+								<label>Saved Searches</label>
+								<hr>
+							
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			
+			<!-- modal-end -->
+			
+			<div class="w3-right w3-margin-top w3-border-left">
+				<img src="excel.png" ng-click="xlDownload()" class="w3-hover-shadow w3-margin-left">
+				<img src="export-excel.png" class="w3-hover-shadow">
+			</div>
+			
+			<div class="w3-dropdown-hover w3-right w3-margin-top w3-margin-bottom w3-margin-right" >
+				<button class="w3-button w3-border w3-border-grey w3-round-medium">
+					Saved Searches
+					<h4 class="fa fa-chevron-down"></h4></button>
+				<div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+					<a href="#" class="w3-bar-item w3-button">Search1</a>
+					<a href="#" class="w3-bar-item w3-button">Search2</a>
+					<a href="#" class="w3-bar-item w3-button">Search3</a>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="w3-container">
+			<table class="w3-table w3-striped w3-small w3-bordered w3-border-top" id="searchTable">
+				<tr>
+					<th style="width:8%">Issue ID<input class="w3-input" type="text" placeholder="Search" ng-model="search.issueNumber" ></th>
+					<th>Issue Type - Subtype<input class="w3-input" type="text" placeholder="Search" ng-model="issueTypeSubtype"  ></th>
+					<th style="width:10%">Location Type<input class="w3-input" type="text" placeholder="Search" ng-model="search.locationTypeValue" ></th>
+					<th>Location<input class="w3-input" type="text" placeholder="Search" ng-model="location" ></th>
+					<th>Supplier<input class="w3-input" type="text" placeholder="Search" ng-model="supplier" ></th>
+					<th style="width:10%">Product<input class="w3-input" type="text" placeholder="Search" ng-model="product" ></th>
+					<th style="width:10%">Responsible Party<input class="w3-input" type="text" placeholder="Search" ng-model="search.responsibleParty" ></th>
+					<th style="width:8%">Issue Date<input class="w3-input" type="text" placeholder="Search" ng-model="issueDate" ></th>
+					<th style="width:7%">Status<input class="w3-input" type="text" placeholder="Search" ng-model="search.status" ></th>
+					<th style="width:8%">Justified?<input class="w3-input" type="text" placeholder="Search" ng-model="search.justified" ></th>
+				</tr>
+				<tr ng-repeat="x in searchIssueTable | orderBy:'issueNumber' | limitTo:countOption | filter:search  | filter:issueTypeSubtypeFilter | filter:locationFilter | filter:productFilter | filter:supplierFilter | filter:issueDateFilter ">
+					<td ng-click="viewIssue(x.issueNumber)">{{x.issueNumber}}</td>
+					<td>{{concatDash(x.issueTypeValue, x.issueSubtypeValue)}}</td>
+					<td>{{x.locationTypeValue}}</td>
+					<td>{{concatDash(x.location, x.locationValue)}}</td>
+					<td>{{concatDash(x.supplier, x.supplierValue)}}</td>
+					<td>{{concatDash(x.product, x.productValue)}}</td>
+					<td>{{x.responsibleParty}}</td>
+					<td>{{x.issueDate| date:'dd MM yyyy'}}   </td>
+					<td>{{x.status}}</td>
+					<td>{{x.justified}}</td>
+				</tr>
+				
+			</table>
+		
+		<div class="w3-container w3-border-bottom w3-margin-top w3-row">
+			<div class="w3-quarter w3-margin-bottom w3-margin-top">
+				<h5>Showing {{$index+1}} - {{$index+countOption}} of {{numberOfData}} items</h5>
+			</div>
+			<div class="w3-quarter w3-bar w3-margin-bottom w3-margin-top">
+				<ul ng-if="myCtrl.pager.pages.length" class="pagination">
+					<li ng-class="{disabled:myCtrl.pager.currentPage === 1}">
+						<a ng-click="myCtrl.setPage(myCtrl.pager.currentPage-1)">&laquo;</a>
+					</ul>
+					<li ng-repeat="page in myCtrl.pager.pages" ng-class="{active:myCtrl.pager.currentPage === page}">
+						<a ng-click="myCtrl.setPage(page)">{{page}}</a>
+					</li>
+					<li ng-class="{disabled:myCtrl.pager.currentPage === myCtrl.pager.totalPages}">
+						<a ng-click="myCtrl.setPage(myCtrl.pager.currentPage+1)">&raquo;</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="w3-quarter w3-right w3-margin-bottom w3-margin-top ">
+				
+				Show <select class="w3-select w3-border w3-margin-bottom w3-round" style="width:15%;" ng-model="countOption">
+					<option ng-repeat="x in countValue" value="{{x}}">{{x}}</option>
+				</select> per page
+					
+				
+			</div>
+		</div>
+		</div>
+		<div class="w3-container">
+			<p> footer</p>
+		</div>
+	
+
