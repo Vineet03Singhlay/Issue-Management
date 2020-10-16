@@ -90,7 +90,7 @@ public class SupplierVo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.vo.SupplierVo[ id=" + id + " ]";
+        return "com.vo.supplier.SupplierVo[ id=" + id + " ]";
     }
     
 }

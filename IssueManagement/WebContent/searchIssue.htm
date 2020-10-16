@@ -1,10 +1,7 @@
-		
-		<!-- second line header start -->
+<!-- second line header start -->
 		<div class="w3-container w3-green">
 			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
-				<a href="#!home" >
-					<button class="w3-button fa fa-home w3-large"></button>
-				</a>
+				<button class="w3-button fa fa-home w3-large"></button>
 			</div>
 			<div class="vl w3-left" style="height:52px; color:#ccc"></div>
 			<div class="w3-left w3-margin-top w3-margin-bottom" style="padding-left:4px;">
@@ -16,17 +13,20 @@
 			</div>
 			<div class="vl w3-right" style="height:52px; color:#ccc"></div>
 			<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom" style="margin-top:14px;">
-				<a href="#!createIssue" >
-					<button class="w3-button w3-yellow w3-hover-shadow w3-round-large">Create Issue</button>
-				</a>
+			<a href="#!createIssue" > 	<button class="w3-button w3-yellow w3-hover-shadow w3-round-large">Create Issue</button> </a>
 			</div>
 			
 		</div>
 		<!-- second line header end -->
 		
-		<div class="w3-container ">
+		
+		
+		
+	<div class="w3-container ">     
 			
-			<div class="w3-left w3-margin-left w3-margin-top w3-margin-bottom">
+		
+		
+		<div class="w3-left w3-margin-left w3-margin-top w3-margin-bottom">
 				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue w3-round-medium">Filter Results<h5 class="fa fa-chevron-down"></h5></button>
 			</div>
 			
@@ -41,24 +41,25 @@
 					<hr class="w3-margin-left w3-margin-right">
 					<div class="w3-container" >
 						<div class="w3-left w3-border-right w3-margin-bottom" style="width:75%;">
-							<form class="w3-container" action="">
+							<form class="w3-container"  >
 								<div class="w3-row">
 									<div class="w3-third">
 										<label>Issue ID</label>
-										<input type="text" class="w3-input w3-border w3-margin-bottom" style="width:80%;" ng-model="issueIDName">
+										<input type="text" class="w3-input w3-border w3-margin-bottom" style="width:80%;" ng-model="issueId">
 									</div>
 									<div class="w3-third">
 										<label>Issue Type</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueTypeOption">
-											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in issueTypeValue" value="{{x}}">{{x}}</option>
+										<option value="" disabled selected >Select</option>
+											<option ng-repeat="it in issueTypeList" value="{{it.dropdownChildKey}}">{{it.dropdownChildValue}}</option>
+										
 										</select>
 									</div>
 									<div class="w3-third">
 										<label>Issue Subtype</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueSubtypeOption">
-											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in issueSubtypeValue" value="{{x}}">{{x}}</option>
+											<option value="" disabled selected >Select</option>
+											<option ng-repeat="ist in issueSubtypeList" value="{{ist.dropdownChildKey}}">{{ist.dropdownChildValue}}</option>
 										</select>
 									</div>
 								</div>
@@ -67,44 +68,45 @@
 										<label>Location Type</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="locationTypeOption">
 											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in locationTypeValue" value="{{x}}">{{x}}</option>
+											<option ng-repeat="lt in locationTypeList" value="{{lt.locationTypeId}}">{{lt.locationTypeValue}}</option>
 										</select>
 									</div>
 									<div class="w3-third">
 										<label>Location Name</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="locationNameOption">
-											<option value="" disabled selected></option>
-											<option ng-repeat="x in locationNameValue" value="{{x}}">{{x}}</option>
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="l in locationList"  value="{{l.locationId}}" >{{l.locationValue}}</option>
 										</select>
 									</div>
 									<div class="w3-third">
 										<label>Justified?</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="justifiedOption">
 											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in justifiedValue" value="{{x}}">{{x}}</option>
+											<option ng-repeat="j in justifiedList" value="{{j.justified}}">{{j.justified}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="w3-row">
 									<div class="w3-third">
-										<label>product#</label>
+										<label>Product#</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="productOption">
-											<option value="" disabled selected></option>
-											<option ng-repeat="x in productValue" value="{{x}}">{{x}}</option>
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="p in productList" value="{{p.productId}}" >{{p.productName}}</option>
 										</select>
 									</div>
+									
 									<div class="w3-third">
 										<label>Supplier#</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="supplierOption">
-											<option value="" disabled selected></option>
-											<option ng-repeat="x in supplierValue" value="{{x}}">{{x}}</option>
+											<option value="" disabled selected>Select</option>
+											<option ng-repeat="s in supplierList" value="{{s.supplierId}}">{{s.supplierName}}</option>
 										</select>
 									</div>
 									<div class="w3-third">
 										<label>Issue Status</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="issueStatusOption">
 											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in issueStatusValue" value="{{x}}">{{x}}</option>
+											<option ng-repeat="st in issueStatusList" value="{{st.status}}">{{st.status}}</option>
 										</select>
 									</div>
 								</div>
@@ -113,21 +115,21 @@
 										<label>Responsible Party</label>
 										<select class="w3-select w3-border w3-margin-bottom" style="width:80%;" ng-model="responsiblePartyOption">
 											<option value="" disabled selected>Select</option>
-											<option ng-repeat="x in responsiblePartyValue" value="{{x}}">{{x}}</option>
+											<option ng-repeat="rp in responsiblePartyList" value="{{rp.locationTypeId}}">{{rp.locationTypeValue}}</option>
 										</select>
 									</div>
 									<div class="w3-third">
 										<label>Issue Date</label>
-										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;">
+										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;" ng-model="issueDate" >
 									</div>
 									<div class="w3-third">
 										<label>Issue Closed Date</label>
-										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;">
+										<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;" ng-model="issueClosedDate" >
 									</div>
 								</div>
 								<hr class="w3-margin-left w3-margin-right">
-								<button class="w3-button w3-right w3-margin-left w3-blue w3-hover-shadow w3-round">Search</button>
-								<button class="w3-button w3-right w3-margin-left w3-round">Reset</button>
+								<button ng-click="resetResultsFilterSearch()" class="w3-button w3-right w3-margin-left w3-blue w3-hover-shadow w3-round">Search</button>
+								<button class="w3-button w3-right w3-margin-left w3-round" ng-click="resetResultsFilter()" >Reset</button>
 								<div class="vl w3-right w3-margin-left" style="height:40px; color:#eee;"></div>
 								<button class="w3-button w3-right w3-blue w3-hover-shadow w3-round">Save Search</button>
 							</form>
@@ -147,6 +149,7 @@
 			
 			<!-- modal-end -->
 			
+			
 			<div class="w3-right w3-margin-top w3-border-left">
 				<img src="excel.png" ng-click="xlDownload()" class="w3-hover-shadow w3-margin-left">
 				<img src="export-excel.png" class="w3-hover-shadow">
@@ -163,9 +166,12 @@
 				</div>
 			</div>
 			
-		</div>
-		
-		<div class="w3-container">
+			
+			</div>
+			
+			
+			
+			<div class="w3-container">
 			<table class="w3-table w3-striped w3-small w3-bordered w3-border-top" id="searchTable">
 				<tr>
 					<th style="width:8%">Issue ID<input class="w3-input" type="text" placeholder="Search" ng-model="search.issueNumber" ></th>
@@ -175,22 +181,26 @@
 					<th>Supplier<input class="w3-input" type="text" placeholder="Search" ng-model="supplier" ></th>
 					<th style="width:10%">Product<input class="w3-input" type="text" placeholder="Search" ng-model="product" ></th>
 					<th style="width:10%">Responsible Party<input class="w3-input" type="text" placeholder="Search" ng-model="search.responsibleParty" ></th>
-					<th style="width:8%">Issue Date<input class="w3-input" type="text" placeholder="Search" ng-model="issueDate" ></th>
+					<th style="width:8%">Issue Date<input class="w3-input" type="text" placeholder="Search" ng-model="filterIssueDate" ></th>
 					<th style="width:7%">Status<input class="w3-input" type="text" placeholder="Search" ng-model="search.status" ></th>
 					<th style="width:8%">Justified?<input class="w3-input" type="text" placeholder="Search" ng-model="search.justified" ></th>
 				</tr>
-				<tr ng-repeat="x in searchIssueTable | orderBy:'issueNumber' | limitTo:countOption | filter:search  | filter:issueTypeSubtypeFilter | filter:locationFilter | filter:productFilter | filter:supplierFilter | filter:issueDateFilter ">
-					<td ng-click="viewIssue(x.issueNumber)">{{x.issueNumber}}</td>
-					<td>{{concatDash(x.issueTypeValue, x.issueSubtypeValue)}}</td>
-					<td>{{x.locationTypeValue}}</td>
-					<td>{{concatDash(x.location, x.locationValue)}}</td>
-					<td>{{concatDash(x.supplier, x.supplierValue)}}</td>
-					<td>{{concatDash(x.product, x.productValue)}}</td>
-					<td>{{x.responsibleParty}}</td>
-					<td>{{x.issueDate| date:'dd MM yyyy'}}   </td>
-					<td>{{x.status}}</td>
-					<td>{{x.justified}}</td>
+				
+				
+				<tr  ng-repeat="x in searchIssueTable | orderBy:'issueNumber' | limitTo:countOption | filter:search  | filter:issueTypeSubtypeFilter | filter:locationFilter | filter:productFilter | filter:supplierFilter | filter:issueDateFilter |filter:resultsFilter ">
+ 				<td ng-click="viewIssue(x.issueNumber)">{{x.issueNumber}}</td> 
+				<td ng-click="viewIssue(x.issueNumber)">{{concatDash(x.issueTypeValue, x.issueSubtypeValue)}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{x.locationTypeValue}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{concatDash(x.location, x.locationValue)}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{concatDash(x.supplier, x.supplierValue)}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{concatDash(x.product, x.productValue)}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{x.responsibleParty}}</td>
+				<td ng-click="viewIssue(x.issueNumber)" >{{x.issueDate| date:'dd MMM yyyy'}}   </td>
+				<td ng-click="viewIssue(x.issueNumber)">{{x.status}}</td>
+				<td ng-click="viewIssue(x.issueNumber)">{{x.justified}}</td>				
 				</tr>
+				
+				
 				
 			</table>
 		
@@ -215,15 +225,14 @@
 			<div class="w3-quarter w3-right w3-margin-bottom w3-margin-top ">
 				
 				Show <select class="w3-select w3-border w3-margin-bottom w3-round" style="width:15%;" ng-model="countOption">
-					<option ng-repeat="x in countValue" value="{{x}}">{{x}}</option>
+					<option ng-repeat="x in countValue" ng-value="{{x}}">{{x}}</option>
 				</select> per page
 					
 				
 			</div>
-		</div>
-		</div>
-		<div class="w3-container">
-			<p> footer</p>
-		</div>
-	
 
+
+		
+
+		</div>
+	</div>

@@ -1,5 +1,8 @@
 package com.action.createIssue;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 
 import org.hibernate.SessionFactory;
@@ -7,6 +10,8 @@ import org.hibernate.SessionFactory;
 import com.action.BaseAction;
 import com.dao.BaseDao;
 import com.dao.createIssue.CreateIssueDao;
+import com.dao.createIssue.IssueFileDao;
+import com.vo.createIssue.IssueFileVo;
 import com.vo.searchIssue.IssueTransactVo;
 
 public class CreateIssueAction extends BaseAction{
@@ -79,6 +84,39 @@ public class CreateIssueAction extends BaseAction{
     
     private String locationType;
 
+    
+	private File[] uploadedFile;
+	private String[] uploadedFileFileName;
+	private String[] uploadedFileContentType;
+	
+	public File[] getUploadedFile() {
+		return uploadedFile;
+	}
+
+
+	public void setUploadedFile(File[] uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+
+	public String[] getUploadedFileFileName() {
+		return uploadedFileFileName;
+	}
+
+
+	public void setUploadedFileFileName(String[] uploadedFileFileName) {
+		this.uploadedFileFileName = uploadedFileFileName;
+	}
+
+
+	public String[] getUploadedFileContentType() {
+		return uploadedFileContentType;
+	}
+
+
+	public void setUploadedFileContentType(String[] uploadedFileContentType) {
+		this.uploadedFileContentType = uploadedFileContentType;
+	}
 	
 	public Integer getId() {
         return id;
@@ -344,7 +382,7 @@ public class CreateIssueAction extends BaseAction{
         this.locationType = locationType;
     }
 	
-    public void createIssue()
+    public void createIssue() throws IOException
 	{	
 		
 		IssueTransactVo it=new IssueTransactVo();
@@ -352,7 +390,8 @@ public class CreateIssueAction extends BaseAction{
 		
 		Integer issueTransactSequence = BaseDao.getNextSequencevalue("issue_transact_seq").intValue();
 		it.setId(issueTransactSequence);
-		it.setIssueNumber(issueNumberFormat(issueTransactSequence));
+		String issueNumFormat = issueNumberFormat(issueTransactSequence);
+		it.setIssueNumber(issueNumFormat);
 		
 		it.setIssueDate(issueDate);
 		it.setCreatedTime(new Date());
@@ -382,7 +421,38 @@ public class CreateIssueAction extends BaseAction{
 		
 		CreateIssueDao.createIssue(it);
 		
+		for(int i=0;i<uploadedFile.length;i++)
+		{
+			if(uploadedFile[i]==null)
+			{
+				System.out.println("upladed file is null ");
+			}
 		
+			else
+			{
+				Integer issueFileSequence = BaseDao.getNextSequencevalue("issue_file_seq").intValue();
+				FileInputStream inputStream = new FileInputStream(uploadedFile[i]);
+				byte[] fileInBytes=new byte[(int)uploadedFile[i].length()];
+				inputStream.read(fileInBytes);
+				
+				System.out.println("uploaded file content is "+uploadedFileContentType[i]);
+				System.out.println("uploaded filename is "+uploadedFileFileName[i]);
+				
+				IssueFileVo ifv = new IssueFileVo();
+				
+				ifv.setId(issueFileSequence);
+				ifv.setFileName(uploadedFileFileName[i]);
+				ifv.setFileType(uploadedFileContentType[i]);
+				ifv.setIssueFile(fileInBytes);
+				ifv.setIssueNumber(issueNumFormat);
+				IssueFileDao.addIssueFile(ifv);
+				
+			
+			}
+		
+		}
+		
+		System.out.println(it);
 		
 	}
     

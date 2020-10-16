@@ -23,6 +23,8 @@
         <mapping class="com.vo.location.LocationVo"/>
         <mapping class="com.vo.location.LocationTypeVo"/>
         <mapping class="com.vo.viewIssue.ResponseInfoVo"/>
+        <mapping class="com.vo.createIssue.IssueFileVo"/>
+        
         
 
     </session-factory>

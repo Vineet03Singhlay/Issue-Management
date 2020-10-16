@@ -88,7 +88,7 @@ public class ProductSupplierMapVo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.vo.ProductSupplierMapVo[ id=" + id + " ]";
+        return "com.vo.common.ProductSupplierMapVo[ id=" + id + " ]";
     }
     
 }

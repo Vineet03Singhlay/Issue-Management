@@ -266,14 +266,20 @@
 			
 			<div class="w3-container w3-left w3-white w3-column w3-card" style="width:30%; margin:16px; height:620px;">
 				
-					<h5 style="font-weight:bold">FILES</h5>
+				<h5 style="font-weight:bold">FILES</h5>
 					
 				<hr class="w3-black">
 				<div>
 					<label onclick="selectFile(event)" class="fa fa-file-o" for="createIssueFile"><h5 class="w3-hover-opacity" style="color:#06abba; display:inline;"> Attach Files</h5></label>
 					<!-- <input class="w3-left" style="display:none;" type="file" id="createIssueFile" ng-model="issueFileName" multiple> -->
-					<h5 class="w3-right">{{documentCount}} Document(s) attached</h5>
-					
+					<h5 class="w3-right"><p style="display:inline;" id="documentCount"></p> Document(s) attached</h5>
+					<p class="w3-text-red">{{errortext}}</p>
+				</div>
+				<div>
+					<ul class="w3-ul" id="issueFile">
+    					<!-- issue file(s) are shown here from js file what to be uploaded -->
+  					</ul>
+  					
 				</div>
 			</div>
 		

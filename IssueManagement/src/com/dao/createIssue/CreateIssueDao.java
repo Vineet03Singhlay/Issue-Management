@@ -18,7 +18,7 @@ public class CreateIssueDao extends BaseDao {
 			session = getSession();
 			tx=session.beginTransaction();
 			
-			
+			System.out.println("create dao"+it);
 			session.save(it);
 			
 			tx.commit();

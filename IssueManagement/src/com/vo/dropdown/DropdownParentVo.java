@@ -74,7 +74,7 @@ public class DropdownParentVo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.vo.DropdownParentVo[ id=" + id + " ]";
+        return "com.vo.dropdown.DropdownParentVo[ id=" + id + " ]";
     }
     
 }

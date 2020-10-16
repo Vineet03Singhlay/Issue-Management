@@ -97,7 +97,7 @@ public class ProductVo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.vo.ProductVo[ id=" + id + " ]";
+        return "com.vo.product.ProductVo[ id=" + id + " ]";
     }
     
 }

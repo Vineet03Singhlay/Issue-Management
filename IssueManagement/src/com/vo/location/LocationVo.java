@@ -98,7 +98,7 @@ public class LocationVo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.vo.LocationVo[ id=" + id + " ]";
+        return "com.vo.location.LocationVo[ id=" + id + " ]";
     }
     
 }
