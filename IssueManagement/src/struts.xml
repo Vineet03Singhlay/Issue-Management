@@ -59,5 +59,26 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
  		
  		<action name="getResponse" class="com.action.viewIssue.ResponseInfoAction" method="getResponse">
   		</action>
+  		
+  		<action name="addSearchDetail" class="com.action.searchIssue.SavedSearchesAction" method="addSearchDetail">
+        </action>
+        
+        <action name="getSearchDetailByUserId" class="com.action.searchIssue.SavedSearchesAction" method="getSearchDetailByUserId">
+        </action>
+        
+        <action name="getSearchDetailBySearchName" class="com.action.searchIssue.SavedSearchesAction" method="getSearchDetailBySearchName">
+        </action>
+        
+        <action name="getResponseFile" class="com.action.viewIssue.ResponseFileAction" method="getResponseFile">
+        </action>
+        
+        <action name="downloadIssueFile" class="com.action.viewIssue.DownloadFileAction" method="downloadIssueFile">
+        	<result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                
+            </result>
+        </action>
 </package>  
 </struts>

@@ -31,7 +31,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";
@@ -54,7 +53,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";
@@ -77,7 +75,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";
@@ -100,7 +97,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";
@@ -123,7 +119,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";
@@ -146,7 +141,6 @@ public class DropdownChildAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";

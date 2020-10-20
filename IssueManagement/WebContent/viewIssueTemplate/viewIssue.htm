@@ -1,6 +1,5 @@
 		
 		
-		
 		<!-- second line header start -->
 		<div class="w3-container w3-green">
 			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
@@ -270,8 +269,12 @@
 						<h5 >{{fileListLength}} Document(s) attached</h5>
 					</div>
 					<div>
-						<ul class="w3-ul" id="issueFile">
-	    					<li ng-repeat="x in viewFileList">{{x.fileName}}<span style="cursor:pointer;" class="w3-right w3-margin-right">x</span></li>
+						<ul class="w3-ul">
+	    					<li ng-repeat="x in viewFileList">{{x.fileName}}<a href="http://localhost:8088/IssueManagement/downloadIssueFile?fileId={{x.id}}" download ><span style="cursor:pointer;" class="w3-right w3-margin-right fa fa-download"></span></a></li>
+	  					
+	  					</ul>
+	  					<ul class="w3-ul">
+	    					<li ng-repeat="x in viewResponseFileList">{{x.fileName}}<span style="cursor:pointer;" class="w3-right w3-margin-right">x</span></li>
 	  					</ul>
 	  				</div>
 				</div>
@@ -289,8 +292,14 @@
 						</textarea>
 					</div>
 					<div class="">
-						<label class="fa fa-file-o" for="attachResponseFile"><h5 class="w3-hover-opacity" style="color:#06abba; display:inline;"> Attach Files</h5></label>
+						<label onclick="selectFile(event)" class="fa fa-file-o" for="attachResponseFile"><h5 class="w3-hover-opacity" style="color:#06abba; display:inline;"> Attach Files</h5></label>
 						<input class="w3-left" style="display:none;" type="file" id="attachResponseFile" ng-model="responsefilename" multiple>
+					</div>
+					<div>
+						<ul class="w3-ul" id="responseFile">
+    						<!-- issue file(s) are shown here from js file what to be uploaded -->
+  						</ul>
+  					
 					</div>
 				</div>
 				</form> 

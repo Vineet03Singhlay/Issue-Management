@@ -1,4 +1,4 @@
-package com.dao.createIssue;
+package com.dao.searchIssue;
 
 import java.util.List;
 
@@ -7,12 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.dao.BaseDao;
-import com.vo.createIssue.IssueFileVo;
-import com.vo.searchIssue.IssueTransactVo;
+import com.vo.searchIssue.SavedSearchesVo;
 
-public class IssueFileDao extends BaseDao {
+public class SavedSearchesDao extends BaseDao {
 
-	public static void addIssueFile(IssueFileVo ifv)
+	public static void addSearchDetail(SavedSearchesVo ssv)
 	{
 		
 		Session session= null;
@@ -22,7 +21,7 @@ public class IssueFileDao extends BaseDao {
 			session = getSession();
 			tx=session.beginTransaction();
 			
-			session.save(ifv);
+			session.save(ssv);
 			
 			tx.commit();
 		}
@@ -36,9 +35,9 @@ public class IssueFileDao extends BaseDao {
 		}
 	}
 	
-	public static List<IssueFileVo> getIssueFile(String issueNumber)
+	public static List<SavedSearchesVo> getSearchDetailByUserId(Integer userId)
 	{
-		List<IssueFileVo> res=null;
+		List<SavedSearchesVo> res=null;
 		
 		Session session= null;
 		Transaction tx=null;
@@ -46,9 +45,9 @@ public class IssueFileDao extends BaseDao {
 		{
 			session = getSession();
 			tx=session.beginTransaction();
-			String hql = "FROM IssueFileVo i WHERE i.issueNumber = :issueNumber order by i.id asc";
+			String hql = "FROM SavedSearchesVo i WHERE i.userId = :userId order by i.id asc";
 			Query query = session.createQuery(hql);
-			query.setParameter("issueNumber",issueNumber);
+			query.setParameter("userId",userId);
 			res= query.getResultList();
 			
 			tx.commit();
@@ -65,9 +64,9 @@ public class IssueFileDao extends BaseDao {
 		return res;
 	}
 	
-	public static IssueFileVo getIssueFileById(Integer id)
+	public static SavedSearchesVo getSearchDetailBySearchName(String searchName, Integer userId)
 	{
-		IssueFileVo res=null;
+		SavedSearchesVo res=null;
 		
 		Session session= null;
 		Transaction tx=null;
@@ -75,10 +74,11 @@ public class IssueFileDao extends BaseDao {
 		{
 			session = getSession();
 			tx=session.beginTransaction();
-			String hql = "FROM IssueFileVo i WHERE i.id = :id";
+			String hql = "FROM SavedSearchesVo i WHERE i.userId = :userId and i.searchName = :searchName order by i.id asc";
 			Query query = session.createQuery(hql);
-			query.setParameter("id",id);
-			res= (IssueFileVo)query.getResultList().get(0);
+			query.setParameter("userId",userId);
+			query.setParameter("searchName", searchName);
+			res= (SavedSearchesVo)query.getResultList().get(0);
 			
 			tx.commit();
 		}

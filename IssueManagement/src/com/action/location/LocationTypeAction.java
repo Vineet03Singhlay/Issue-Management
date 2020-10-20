@@ -32,7 +32,6 @@ public class LocationTypeAction extends CommonIssueAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
 			System.out.println(e);
 		}
 		return "";

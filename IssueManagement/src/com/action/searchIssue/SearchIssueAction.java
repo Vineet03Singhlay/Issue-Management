@@ -30,7 +30,6 @@ public class SearchIssueAction extends BaseAction {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method getLocation()");
 			System.out.println(e);
 		}
 		return "";

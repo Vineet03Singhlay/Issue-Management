@@ -274,6 +274,7 @@
 					<!-- <input class="w3-left" style="display:none;" type="file" id="createIssueFile" ng-model="issueFileName" multiple> -->
 					<h5 class="w3-right"><p style="display:inline;" id="documentCount"></p> Document(s) attached</h5>
 					<p class="w3-text-red">{{errortext}}</p>
+					<p ng-repeat="x in fileList"> {{x}}</p>
 				</div>
 				<div>
 					<ul class="w3-ul" id="issueFile">

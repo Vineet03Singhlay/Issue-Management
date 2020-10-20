@@ -17,14 +17,15 @@
         <mapping class="com.vo.dropdown.DropdownChildVo"/>
         <mapping class="com.vo.dropdown.DropdownParentVo"/>
         <mapping class="com.vo.searchIssue.IssueTransactVo"/>
+        <mapping class="com.vo.searchIssue.SavedSearchesVo"/>
         <mapping class="com.vo.product.ProductVo"/>
         <mapping class="com.vo.common.ProductSupplierMapVo"/>
         <mapping class="com.vo.supplier.SupplierVo"/>
         <mapping class="com.vo.location.LocationVo"/>
         <mapping class="com.vo.location.LocationTypeVo"/>
-        <mapping class="com.vo.viewIssue.ResponseInfoVo"/>
         <mapping class="com.vo.createIssue.IssueFileVo"/>
-        
+        <mapping class="com.vo.viewIssue.ResponseFileVo"/>
+        <mapping class="com.vo.viewIssue.ResponseInfoVo"/>
         
 
     </session-factory>

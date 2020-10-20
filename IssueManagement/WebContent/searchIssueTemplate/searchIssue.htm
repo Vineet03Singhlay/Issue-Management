@@ -1,3 +1,5 @@
+
+
 <!-- second line header start -->
 		<div class="w3-container w3-green">
 			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
@@ -131,7 +133,7 @@
 								<button ng-click="resetResultsFilterSearch()" class="w3-button w3-right w3-margin-left w3-blue w3-hover-shadow w3-round">Search</button>
 								<button class="w3-button w3-right w3-margin-left w3-round" ng-click="resetResultsFilter()" >Reset</button>
 								<div class="vl w3-right w3-margin-left" style="height:40px; color:#eee;"></div>
-								<button class="w3-button w3-right w3-blue w3-hover-shadow w3-round">Save Search</button>
+								<button ng-click="saveSearches()" class="w3-button w3-right w3-blue w3-hover-shadow w3-round">Save Search</button>
 							</form>
 							
 						</div>
@@ -139,7 +141,9 @@
 						<div class="w3-right w3-container" style="width:25%;">
 								<label>Saved Searches</label>
 								<hr>
-							
+								<ul id="savedSearchesList">
+									<li ng-click="getSearchBySearchnameAndUserId(x.searchName,x.userId)"  ng-repeat="x in savedSearchesListById" style="cursor:pointer;">{{x.searchName}}<span  style="cursor:pointer;" class="w3-right w3-margin-right"></span></li>
+								</ul>
 						</div>
 					</div>
 
@@ -160,9 +164,7 @@
 					Saved Searches
 					<h4 class="fa fa-chevron-down"></h4></button>
 				<div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
-					<a href="#" class="w3-bar-item w3-button">Search1</a>
-					<a href="#" class="w3-bar-item w3-button">Search2</a>
-					<a href="#" class="w3-bar-item w3-button">Search3</a>
+					<li ng-click="applySearchFilterBySearchName(x.searchName,x.userId)"  ng-repeat="x in savedSearchesListById" style="cursor:pointer;" class="w3-bar-item w3-button" >{{x.searchName}}<span  style="cursor:pointer;" class="w3-right w3-margin-right"></span></li>				
 				</div>
 			</div>
 			
