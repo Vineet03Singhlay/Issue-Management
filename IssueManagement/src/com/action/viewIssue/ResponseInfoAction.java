@@ -258,4 +258,27 @@ public class ResponseInfoAction extends BaseAction {
 		
 	}
     
+    public String getResponseById()
+	{	
+		List<ResponseInfoVo> res=null;
+		ObjectMapper mapper = new ObjectMapper();
+		try
+		{
+		res=ResponseInfoDao.getResponseById(issueNumber);
+		HttpServletResponse response=ServletActionContext.getResponse();
+		response.setContentType("application/json");
+		PrintWriter out=response.getWriter();
+		System.out.println(mapper.writeValueAsString(res));
+		out.print(mapper.writeValueAsString(res));
+		out.flush();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception occured in method gethow received()");
+			System.out.println(e);
+		}
+		return "";
+		
+	}
+    
 }

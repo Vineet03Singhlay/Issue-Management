@@ -45,7 +45,7 @@ public class ResponseFileDao extends BaseDao{
 		{
 			session = getSession();
 			tx=session.beginTransaction();
-			String hql = "FROM ResponseFileVo i WHERE i.responseId = (select j.id FROM ResponseInfoVo j where j.issueNumber =: issueNumber) order by i.id asc";
+			String hql = "FROM ResponseFileVo i WHERE i.responseId in (select j.id FROM ResponseInfoVo j where j.issueNumber =: issueNumber) order by i.id asc";
 			Query query = session.createQuery(hql);
 			query.setParameter("issueNumber",issueNumber);
 			res= query.getResultList();

@@ -16,10 +16,10 @@ app.controller("viewIssueController", function($scope, $routeParams, $http, $loc
         $scope.fileListLength = $scope.viewFileList.length;
     });	
 	
-	/*$http.get("http://localhost:8088/IssueManagement/getResponseFile?issueNumber="+$routeParams.issueId).then(function(response){
+	$http.get("http://localhost:8088/IssueManagement/getResponseFile?issueNumber="+$routeParams.issueId).then(function(response){
         $scope.viewResponseFileList = response.data;
         
-    });*/
+    });
 	
 	$scope.issueStatusTable = [
 		{ fromStatus: "Open", toStatus: "Closed", comments: "", changedBy: "Suraj Kumar", changedDate: "31 Aug 2018 07:19:31 AM"},
@@ -38,9 +38,22 @@ app.controller("viewIssueController", function($scope, $routeParams, $http, $loc
 	
 	$scope.downloadIssueFile = function(fileId){
 		$http.get("http://localhost:8088/IssueManagement/downloadIssueFile?fileId="+fileId).then(function(response){
-	        alert(fileId);
-	        
 	    });
+	}
+	
+	$http.get("http://localhost:8088/IssueManagement/getResponseById?issueNumber="+$routeParams.issueId).then(function(response){
+        $scope.ResponseDetails = response.data;
+        
+    });
+	
+	$scope.viewResponseFileList = function(responseId){
+    	console.log(responseId+"response");
+    	var res = []
+    	return [1];
+    }
+	
+	getResponseFileList = function(id){
+		console.log(id+"file id");
 	}
 	
 	$scope.self=this;

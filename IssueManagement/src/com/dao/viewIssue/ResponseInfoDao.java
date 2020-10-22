@@ -63,6 +63,31 @@ public class ResponseInfoDao extends BaseDao {
 		}
 		return res;
 	}
+	
+	public static List<ResponseInfoVo> getResponseById(String issueNumber)
+	{
+		List<ResponseInfoVo> res = null;
+		Session session = null;
+		Transaction tx = null;
+		try {
+			session = getSession();
+			tx = session.beginTransaction();
+			String hql = "FROM ResponseInfoVo i WHERE i.issueNumber = :issueNumber order by i.id asc";
+			Query query = session.createQuery(hql);
+			query.setParameter("issueNumber",issueNumber);
+			res = query.getResultList();
+			tx.commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			if(tx != null) {
+				tx.rollback();
+			}
+			
+		}
+		return res;
+	}
 
 }
 

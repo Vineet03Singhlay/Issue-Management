@@ -273,9 +273,7 @@
 	    					<li ng-repeat="x in viewFileList">{{x.fileName}}<a href="http://localhost:8088/IssueManagement/downloadIssueFile?fileId={{x.id}}" download ><span style="cursor:pointer;" class="w3-right w3-margin-right fa fa-download"></span></a></li>
 	  					
 	  					</ul>
-	  					<ul class="w3-ul">
-	    					<li ng-repeat="x in viewResponseFileList">{{x.fileName}}<span style="cursor:pointer;" class="w3-right w3-margin-right">x</span></li>
-	  					</ul>
+	  					
 	  				</div>
 				</div>
 			
@@ -283,7 +281,7 @@
 
 			<div id="Response" class="tabcontent">
 			<form >
-			  <div class="w3-container w3-card w3-white" style="margin:16px; height:600px;">
+			  <div class="w3-container w3-card w3-white" style="margin:16px; min-height:600px;">
 					<div style="margin-top:16px;">
 						<h4>Add Response</h4>
 					</div>
@@ -301,6 +299,30 @@
   						</ul>
   					
 					</div>
+										<br>
+						<hr style="border-top: 1px solid black;">
+					<br>
+					<div ng-repeat="x in ResponseDetails" style="height:170px;" class="w3-row">
+						<div class="w3-quarter ">
+							<h4>{{x.responseTime | date:'mediumDate'}}</h4>
+							<h6>{{x.responseTime | date:'shortTime'}}</h6>
+							<div class="w3-border-right" style="border-left: 2px solid;" >
+								<!--  Css to be witten -->
+							</div>
+							
+						</div>
+						<div class="w3-threequarter">
+								<div class="w3-container w3-card w3-row" style="margin:10px; background-color:#c7f0ed; min-height:150px;"> 
+									<h4>{{x.userName}}</h4>
+									<hr style="border-top: 1px solid black;">
+									<p>{{x.responseInfo}}</p>
+									
+	    							<p ng-repeat="y in viewResponseFileList" ng-if="y.responseId == x.id" style="display:inline; background-color:#f1f1f1;">{{y.fileName}}<span style="cursor:pointer;" class="w3-margin-right">&nbsp;x&nbsp;</span></p>
+	  								
+								</div>
+						</div>
+					</div>
+					
 				</div>
 				</form> 
 			</div>

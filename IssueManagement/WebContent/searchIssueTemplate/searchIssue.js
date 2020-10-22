@@ -43,7 +43,6 @@ app.controller("searchIssueController", function($scope, $http, $location){
 	$scope.getSearchBySearchnameAndUserId=function(searchName,userId)
 	{	
 		
-		//=============================
 		$http.get("http://localhost:8088/IssueManagement/getSearchDetailBySearchName?userId="+userId+"&searchName="+searchName).then(function(response){
 	        $scope.savedSearchesListByNameByuserId = response.data;
 	        
@@ -69,7 +68,8 @@ app.controller("searchIssueController", function($scope, $http, $location){
 	
 	$scope.applySearchFilterBySearchName=function(searchName,userId)
 	{
-		alert("search name is : "+searchName+"|| user id is : "+userId);
+		$scope.getSearchBySearchnameAndUserId(searchName,userId);
+		$scope.resetResultsFilterSearch();
 	}
 
 	
