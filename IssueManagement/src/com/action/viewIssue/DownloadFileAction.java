@@ -2,18 +2,15 @@ package com.action.viewIssue;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.PrintWriter;
-import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.codehaus.jackson.map.ObjectMapper;
+import org.apache.log4j.Logger;
 
 import com.dao.createIssue.IssueFileDao;
 import com.vo.createIssue.IssueFileVo;
 
 public class DownloadFileAction {
+	
+	static Logger log = Logger.getLogger(DownloadFileAction.class.getName());  
 	
 	private Integer fileId;
 
@@ -56,14 +53,14 @@ public class DownloadFileAction {
 	public String downloadIssueFile()
 	{	
 		
-		System.out.println(fileId);
+		log.info(fileId);
 		IssueFileVo ifv = IssueFileDao.getIssueFileById(fileId);
 		contentLength = ifv.getIssueFile().length;
 		fileName = ifv.getFileName();
 		inputStream = new ByteArrayInputStream(ifv.getIssueFile());
         
-		System.out.println(ifv.getFileName());
-		System.out.println(ifv.getIssueFile().length);
+		log.info(ifv.getFileName());
+		log.info(ifv.getIssueFile().length);
 		return "success";
 		
 	}

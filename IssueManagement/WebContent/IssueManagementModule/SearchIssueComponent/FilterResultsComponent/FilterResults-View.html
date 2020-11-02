@@ -1,0 +1,142 @@
+<!-- modal-start -->
+
+<div id="id01" class="w3-modal">
+	<div class="w3-modal-content w3-card-4 w3-animate-zoom">
+
+		<div class="w3-center"><br>
+			<a ui-sref="base.searchIssue"><button onclick="document.getElementById('id01').style.display='none'"
+					class="w3-button w3-medium w3-hover-red w3-display-topright"
+					title="Close Modal">&times;</button></a>
+		</div>
+		<hr class="w3-margin-left w3-margin-right">
+		<div class="w3-container">
+			<div class="w3-left w3-border-right w3-margin-bottom" style="width:75%;">
+				<form class="w3-container">
+					<div class="w3-row">
+						<div class="w3-third">
+							<label>Issue ID</label>
+							<input type="text" class="w3-input w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.issueId">
+						</div>
+						<div class="w3-third">
+							<label>Issue Type</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.issueTypeOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="it in vm.issueTypeList" value="{{it.dropdownChildKey}}">
+									{{it.dropdownChildValue}}</option>
+
+							</select>
+						</div>
+						<div class="w3-third">
+							<label>Issue Subtype</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.issueSubtypeOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="ist in vm.issueSubtypeList" value="{{ist.dropdownChildKey}}">
+									{{ist.dropdownChildValue}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-third">
+							<label>Location Type</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.locationTypeOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="lt in vm.locationTypeList" value="{{lt.locationTypeId}}">
+									{{lt.locationTypeValue}}</option>
+							</select>
+						</div>
+						<div class="w3-third">
+							<label>Location Name</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.locationNameOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="l in vm.locationList" value="{{l.locationId}}">{{l.locationValue}}
+								</option>
+							</select>
+						</div>
+						<div class="w3-third">
+							<label>Justified?</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.justifiedOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="j in vm.justifiedList" value="{{j.justified}}">{{j.justified}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-third">
+							<label>Product#</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.productOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="p in vm.productList" value="{{p.productId}}">{{p.productName}}
+								</option>
+							</select>
+						</div>
+
+						<div class="w3-third">
+							<label>Supplier#</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.supplierOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="s in vm.supplierList" value="{{s.supplierId}}">{{s.supplierName}}
+								</option>
+							</select>
+						</div>
+						<div class="w3-third">
+							<label>Issue Status</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.issueStatusOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="st in vm.issueStatusList" value="{{st.status}}">{{st.status}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-third">
+							<label>Responsible Party</label>
+							<select class="w3-select w3-border w3-margin-bottom" style="width:80%;"
+								ng-model="vm.filterResultObj.responsiblePartyOption">
+								<option value="" disabled selected>Select</option>
+								<option ng-repeat="rp in vm.responsiblePartyList" value="{{rp.locationTypeId}}">
+									{{rp.locationTypeValue}}</option>
+							</select>
+						</div>
+						<div class="w3-third">
+							<label>Issue Date</label>
+							<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;"ng-model="vm.filterResultObj.issueDate">
+						</div>
+						<div class="w3-third">
+							<label>Issue Closed Date</label>
+							<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:80%;"ng-model="issueClosedDate">
+						</div>
+					</div>
+					<hr class="w3-margin-left w3-margin-right">
+					<button ng-click="vm.sendDataToSearchIssueController()"
+						class="w3-button w3-right w3-margin-left w3-blue w3-hover-shadow w3-round">Search</button>
+					<button class="w3-button w3-right w3-margin-left w3-round"
+						ng-click="vm.reset()">Reset</button>
+					<div class="vl w3-right w3-margin-left" style="height:40px; color:#eee;"></div>
+					<button ng-click="vm.saveSearch()" class="w3-button w3-right w3-blue w3-hover-shadow w3-round">Save Search</button>
+				</form>
+
+			</div>
+
+			<div class="w3-right w3-container" style="width:25%;">
+				<label>Saved Searches</label>
+				<hr>
+				<ul id="savedSearchesList">
+					<li ng-click="vm.populateSavedSearch(x)" ng-repeat="x in vm.savedSearchesListById" style="cursor:pointer;">{{x.searchName}}<span style="cursor:pointer;" class="w3-right w3-margin-right">x</span></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- modal-end -->

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -16,6 +17,8 @@ import com.vo.searchIssue.SavedSearchesVo;
 
 public class SavedSearchesAction extends BaseAction{
 	
+	static Logger log = Logger.getLogger(SavedSearchesAction.class.getName());  
+
 	private Integer id;
     private String issueNumber;
     private String issueType;
@@ -188,13 +191,13 @@ public class SavedSearchesAction extends BaseAction{
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -211,13 +214,13 @@ public class SavedSearchesAction extends BaseAction{
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		

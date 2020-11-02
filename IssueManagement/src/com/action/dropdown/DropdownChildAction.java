@@ -11,9 +11,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.action.common.CommonIssueAction;
 import com.dao.dropdown.DropdownChildDao;
 import com.vo.dropdown.DropdownChildVo;
-
+import org.apache.log4j.Logger;
 
 public class DropdownChildAction extends CommonIssueAction {
+	
+	static Logger log = Logger.getLogger(DropdownChildAction.class.getName());  
 
 	public String getDropdownChild()
 	{	
@@ -25,13 +27,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -47,13 +49,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -69,13 +71,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -91,13 +93,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -113,13 +115,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -135,13 +137,13 @@ public class DropdownChildAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		

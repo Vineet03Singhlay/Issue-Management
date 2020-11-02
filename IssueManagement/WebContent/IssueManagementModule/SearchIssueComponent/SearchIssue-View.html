@@ -1,0 +1,159 @@
+<!-- second line header start -->
+<div class="w3-container w3-green">
+	<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white"
+		style="padding-right: 6px;">
+		<a ui-sref="base.home"><button class="w3-button fa fa-home w3-large"></button></a>
+	</div>
+	<div class="vl w3-left" style="height: 52px; color: #ccc"></div>
+	<div class="w3-left w3-margin-top w3-margin-bottom"
+		style="padding-left: 4px;">
+		<h5 style="font-weight: bold">Search Issue</h5>
+	</div>
+
+	<div class="w3-right w3-margin-top w3-margin-left w3-margin-bottom">
+		<a ui-sref="base.home"><button class="w3-button w3-green w3-hover-shadow fa fa-mail-reply">&nbsp;Back</button></a>
+	</div>
+	<div class="vl w3-right" style="height: 52px; color: #ccc"></div>
+	<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom"
+		style="margin-top: 14px;">
+		<a ui-sref="base.createIssue">
+			<button class="w3-button w3-yellow w3-hover-shadow w3-round-large">Create Issue</button>
+		</a>
+	</div>
+
+</div>
+<!-- second line header end -->
+
+
+
+
+<div class="w3-container ">
+
+
+
+	<div class="w3-left w3-margin-left w3-margin-top w3-margin-bottom">
+		<a ui-sref="base.searchIssue.filterResults"><button class="w3-button w3-blue w3-round-medium">Filter Results<h5 class="fa fa-chevron-down"></h5></button></a>
+	</div>
+
+	<!-- modal-start -->
+
+	<ui-view></ui-view>
+	
+	<!-- modal-end -->
+
+
+	
+	<div class="w3-right w3-margin-top w3-border-left">
+		<img src="staticData/images/excel.png" ng-click="vm.xlDownload()" class="w3-hover-shadow w3-margin-left">
+		<img src="staticData/images/export-excel.png" class="w3-hover-shadow">
+	</div>
+	
+
+	<div
+		class="w3-dropdown-hover w3-right w3-margin-top w3-margin-bottom w3-margin-right">
+		<button class="w3-button w3-border w3-border-grey w3-round-medium">
+			Saved Searches
+			<h4 class="fa fa-chevron-down"></h4>
+		</button>
+		<div class="w3-dropdown-content w3-bar-block w3-border"
+			style="right: 0">
+
+			<li ng-click="vm.applySearchFilterBySearchName(x)"
+				ng-repeat="x in vm.savedSearchesListById" style="cursor: pointer;"
+				class="w3-bar-item w3-button">{{x.searchName}}<span
+				style="cursor: pointer;" class="w3-right w3-margin-right"></span></li>
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+
+<div class="w3-container">
+	<table class="w3-table w3-striped w3-small w3-bordered w3-border-top"
+		id="searchTable">
+		<tr>
+			<th style="width: 8%">Issue ID<input class="w3-input"
+				type="text" placeholder="Search" ng-model="search.issueNumber"></th>
+			<th>Issue Type - Subtype<input class="w3-input" type="text"
+				placeholder="Search" ng-model="vm.issueTypeSubtype"></th>
+			<th style="width: 10%">Location Type<input class="w3-input"
+				type="text" placeholder="Search" ng-model="search.locationTypeValue"></th>
+			<th>Location<input class="w3-input" type="text"
+				placeholder="Search" ng-model="vm.location"></th>
+			<th>Supplier<input class="w3-input" type="text"
+				placeholder="Search" ng-model="vm.supplier"></th>
+			<th style="width: 10%">Product<input class="w3-input"
+				type="text" placeholder="Search" ng-model="vm.product"></th>
+			<th style="width: 10%">Responsible Party<input class="w3-input"
+				type="text" placeholder="Search"></th>
+			<th style="width: 8%">Issue Date<input class="w3-input"
+				type="text" placeholder="Search" ng-model="vm.filterIssueDate"></th>
+			<th style="width: 7%">Status<input class="w3-input" type="text"
+				placeholder="Search" ></th>
+			<th style="width: 8%">Justified?<input class="w3-input"
+				type="text" placeholder="Search" ></th>
+		</tr>
+
+
+		<tr
+			ng-repeat="x in  vm.filteredTable = ( vm.searchIssueTable | orderBy:'issueNumber' | filter:search  | filter:vm.issueTypeSubtypeFilter | filter:vm.locationFilter | filter:vm.supplierFilter | filter:vm.productFilter | filter:vm.issueDateFilter  | filter:vm.resultsFilter ) |   limitTo:vm.countOption:vm.countOption*(vm.page-1) ">
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.issueNumber}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{vm.concatDash(x.issueTypeValue,
+				x.issueSubtypeValue)}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.locationTypeValue}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{vm.concatDash(x.location,
+				x.locationValue)}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{vm.concatDash(x.supplier,
+				x.supplierValue)}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{vm.concatDash(x.product,
+				x.productValue)}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.responsibleParty}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.issueDate| date:'dd/MM/yyyy'}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.status}}</td>
+			<td ng-click="vm.goToViewInformation(x.issueNumber)">{{x.justified}}</td>
+		</tr>
+
+	</table>
+
+
+<!--  {{x.issueDate| date:'MM/dd/yyyy'}} -->  
+
+
+	<div class="w3-container w3-border-bottom w3-margin-top w3-row">
+		<div class="w3-quarter w3-margin-bottom w3-margin-top">
+			<h5>Showing {{$index+1}} - {{$index+countOption}} of
+				{{filteredTable.length}} items</h5>
+		</div>
+		<div class="w3-quarter w3-bar w3-margin-bottom w3-margin-top">
+
+			<uib-pagination class="pagination-sm pagination"
+				total-items="vm.filteredTable.length" ng-model="vm.page"
+				ng-change="pageChanged()" previous-text="&lsaquo;" max-size="5"
+				boundary-link-numbers="true" num-pages="numPages"
+				next-text="&rsaquo;" items-per-page="vm.countOption"></uib-pagination>
+
+
+
+		</div>
+
+
+
+		<div class="w3-quarter w3-right w3-margin-bottom w3-margin-top ">
+
+			Show <select class="w3-select w3-border w3-margin-bottom w3-round"
+				style="width: 15%;" ng-model="vm.countOption">
+				<option ng-repeat="x in vm.countValue" ng-value="{{x}}">{{x}}</option>
+			</select> per page
+
+
+		</div>
+
+
+
+
+	</div>
+</div>

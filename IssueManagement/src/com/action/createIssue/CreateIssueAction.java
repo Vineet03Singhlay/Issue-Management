@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.hibernate.SessionFactory;
 
+import org.apache.log4j.Logger;
 import com.action.BaseAction;
 import com.dao.BaseDao;
 import com.dao.createIssue.CreateIssueDao;
@@ -15,6 +16,8 @@ import com.vo.createIssue.IssueFileVo;
 import com.vo.searchIssue.IssueTransactVo;
 
 public class CreateIssueAction extends BaseAction{
+	
+	static Logger log = Logger.getLogger(CreateIssueAction.class.getName());  
 	
 	public static SessionFactory sf= BaseDao.getSessionFactory();
     
@@ -421,38 +424,42 @@ public class CreateIssueAction extends BaseAction{
 		
 		CreateIssueDao.createIssue(it);
 		
-		for(int i=0;i<uploadedFile.length;i++)
-		{
-			if(uploadedFile[i]==null)
-			{
-				System.out.println("upladed file is null ");
-			}
 		
-			else
+		if(uploadedFile != null) {
+			for(int i=0;i<uploadedFile.length;i++)
 			{
-				Integer issueFileSequence = BaseDao.getNextSequencevalue("issue_file_seq").intValue();
-				FileInputStream inputStream = new FileInputStream(uploadedFile[i]);
-				byte[] fileInBytes=new byte[(int)uploadedFile[i].length()];
-				inputStream.read(fileInBytes);
+				if(uploadedFile[i]==null)
+				{
+					
+					log.info("upladed file is null ");
+				}
+			
+				else
+				{
+					Integer issueFileSequence = BaseDao.getNextSequencevalue("issue_file_seq").intValue();
+					FileInputStream inputStream = new FileInputStream(uploadedFile[i]);
+					byte[] fileInBytes=new byte[(int)uploadedFile[i].length()];
+					inputStream.read(fileInBytes);
+					
+					log.info("uploaded file content is "+uploadedFileContentType[i]);
+					log.info("uploaded filename is "+uploadedFileFileName[i]);
+					
+					IssueFileVo ifv = new IssueFileVo();
+					
+					ifv.setId(issueFileSequence);
+					ifv.setFileName(uploadedFileFileName[i]);
+					ifv.setFileType(uploadedFileContentType[i]);
+					ifv.setIssueFile(fileInBytes);
+					ifv.setIssueNumber(issueNumFormat);
+					IssueFileDao.addIssueFile(ifv);
+					
 				
-				System.out.println("uploaded file content is "+uploadedFileContentType[i]);
-				System.out.println("uploaded filename is "+uploadedFileFileName[i]);
-				
-				IssueFileVo ifv = new IssueFileVo();
-				
-				ifv.setId(issueFileSequence);
-				ifv.setFileName(uploadedFileFileName[i]);
-				ifv.setFileType(uploadedFileContentType[i]);
-				ifv.setIssueFile(fileInBytes);
-				ifv.setIssueNumber(issueNumFormat);
-				IssueFileDao.addIssueFile(ifv);
-				
+				}
 			
 			}
-		
 		}
 		
-		System.out.println(it);
+		log.info(it);
 		
 	}
     

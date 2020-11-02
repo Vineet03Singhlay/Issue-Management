@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Company</title>
+    <link rel="short icon" href="#">
+    <link rel="stylesheet" href="staticData/styles/style.css">
+    <link rel="stylesheet" href="staticData/styles/w3.css">
+    <link rel="stylesheet" href="staticData/webfont-icon/css/all.css">
+    <link rel="stylesheet" href="staticData/styles/viewIssue.css">
+<!--    <link rel="stylesheet" href="static/styles/bootstrap_icon.css"> -->
+    
+  <!-- Setting the right viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  </head>
+  <body ng-app="myCompany">
+
+    <ui-view></ui-view>
+    
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app-service.js"></script>
+    <script src="base/base-controller.js"></script>
+    <script src="IssueManagementModule/IssueManagement-Controller.js"></script>
+    <script src="IssueManagementModule/CreateIssueComponent/CreateIssue-Controller.js"></script>
+    <script src="IssueManagementModule/ViewIssueComponent/ViewIssue-Controller.js"></script>
+    <script src="IssueManagementModule/ViewIssueComponent/HistoryComponent/History-Controller.js"></script>
+    <script src="IssueManagementModule/ViewIssueComponent/InformationComponent/Information-Controller.js"></script>
+    <script src="IssueManagementModule/ViewIssueComponent/ResponseComponent/Response-Controller.js"></script>
+    <script src="IssueManagementModule/SearchIssueComponent/SearchIssue-Controller.js"></script>
+    <script src="IssueManagementModule/SearchIssueComponent/FilterResultsComponent/FilterResults-Controller.js"></script>
+    
+  </body>
+</html>

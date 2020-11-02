@@ -10,11 +10,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.dao.common.ProductSupplierMapDao;
 import com.vo.common.ProductSupplierMapVo;
+import org.apache.log4j.Logger;
 
 
 public class ProductSupplierMapAction extends CommonIssueAction {
 
-    
+	static Logger log = Logger.getLogger(ProductSupplierMapAction.class.getName());  
+
 	public String getProductSupplierMap()
 	{	
 		List<ProductSupplierMapVo> res=null;
@@ -25,13 +27,13 @@ public class ProductSupplierMapAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		

@@ -1,0 +1,60 @@
+	<div id="Response" class="tabcontent">
+		<form>
+			<div class="w3-container w3-card w3-white"
+				style="margin: 16px; min-height: 600px;">
+				<div style="margin-top: 16px;">
+					<h4>Add Response</h4>
+				</div>
+				<div>
+					<textarea class="w3-border w3-margin-bottom" rows="3"
+						style="width: 100%;" ng-model="vm.responseDescription"
+						placeholder="Write a response here.">
+						</textarea>
+				</div>
+				<div class="">
+					<label ng-click="vm.selectFile(event)" class="fa fa-file-o"
+						for="attachResponseFile"><h5 class="w3-hover-opacity"
+							style="color: #06abba; display: inline;">Attach Files</h5></label> <input
+						class="w3-left" style="display: none;" type="file"
+						id="attachResponseFile" ng-model="vm.responsefilename" multiple>
+				</div>
+				<div>
+					<ul class="w3-ul" id="responseFile">
+						<!-- issue file(s) are shown here from js file what to be uploaded -->
+					</ul>
+
+				</div>
+				<br>
+				<hr style="border-top: 1px solid black;">
+				<br>
+				<div ng-repeat="x in vm.ResponseDetails" style="height: 170px;"
+					class="w3-row">
+					<div class="w3-quarter ">
+						<h4>{{x.responseTime | date:'mediumDate'}}</h4>
+						<h6>{{x.responseTime | date:'shortTime'}}</h6>
+						<div class="w3-border-right" style="border-left: 2px solid;">
+							<!--  Css to be witten -->
+						</div>
+
+					</div>
+					<div class="w3-threequarter">
+						<div class="w3-container w3-card w3-row"
+							style="margin: 10px; background-color: #c7f0ed; min-height: 150px;">
+							<h4>{{x.userName}}</h4>
+							<hr style="border-top: 1px solid black;">
+							<p>{{x.responseInfo}}</p>
+
+							<p ng-repeat="y in vm.viewResponseFileList" class="w3-col.s2"
+								ng-if="y.responseId == x.id"
+								style="display:inline-block; background-color: #f1f1f1; margin-right:8px;">
+								{{y.fileName}}<span style="cursor: pointer;"
+									class="w3-margin-right">&nbsp;x&nbsp;</span>
+							</p>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>

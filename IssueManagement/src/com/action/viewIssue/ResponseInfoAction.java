@@ -2,17 +2,14 @@ package com.action.viewIssue;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Lob;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.SessionFactory;
@@ -28,6 +25,7 @@ import com.vo.viewIssue.ResponseInfoVo;
 public class ResponseInfoAction extends BaseAction {
 	
 	public static SessionFactory sf= BaseDao.getSessionFactory();
+	static Logger log = Logger.getLogger(ResponseInfoAction.class.getName());  
 	
 	private Integer id;
     private String userName;
@@ -200,15 +198,15 @@ public class ResponseInfoAction extends BaseAction {
 		ri.setStatus(status);
 		ri.setDocument(document);
 		ri.setResponsibleParty(responsibleParty);
-		System.out.println(issueNumber+" "+responseInfo+" "+justified+" "+status+" "+document+" "+responsibleParty);
+		log.info(issueNumber+" "+responseInfo+" "+justified+" "+status+" "+document+" "+responsibleParty);
 		
 		ResponseInfoDao.addResponse(ri);
-		
+		System.out.println(ri);
 		for(int i=0;i<uploadedFile.length;i++)
 		{
 			if(uploadedFile[i]==null)
 			{
-				System.out.println("upladed file is null ");
+				log.info("upladed file is null ");
 			}
 		
 			else
@@ -218,8 +216,8 @@ public class ResponseInfoAction extends BaseAction {
 				byte[] fileInBytes=new byte[(int)uploadedFile[i].length()];
 				inputStream.read(fileInBytes);
 				
-				System.out.println("uploaded file content is "+uploadedFileContentType[i]);
-				System.out.println("uploaded filename is "+uploadedFileFileName[i]);
+				log.info("uploaded file content is "+uploadedFileContentType[i]);
+				log.info("uploaded filename is "+uploadedFileFileName[i]);
 				
 				ResponseFileVo rfv = new ResponseFileVo();
 				
@@ -229,7 +227,7 @@ public class ResponseInfoAction extends BaseAction {
 				rfv.setInfoFile(fileInBytes);
 				rfv.setResponseId(responseInfoSequence);
 				ResponseFileDao.addResponseFile(rfv);
-				
+				System.out.println(rfv);
 			}
 		
 		}
@@ -246,13 +244,13 @@ public class ResponseInfoAction extends BaseAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -268,14 +266,14 @@ public class ResponseInfoAction extends BaseAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception occured in method gethow received()");
-			System.out.println(e);
+			log.info("Exception occured in method gethow received()");
+			log.info(e);
 		}
 		return "";
 		

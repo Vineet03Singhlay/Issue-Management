@@ -2,6 +2,7 @@ package com.dao.common;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,6 +11,7 @@ import com.vo.common.ProductSupplierMapVo;
 
 public class ProductSupplierMapDao extends CommonIssueDao {
 	
+	static Logger log = Logger.getLogger(ProductSupplierMapDao.class.getName());  
 	public static List<ProductSupplierMapVo> getProductSupplierMap()
 	{
 		List<ProductSupplierMapVo> res = null;
@@ -25,7 +27,7 @@ public class ProductSupplierMapDao extends CommonIssueDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

@@ -2,16 +2,17 @@ package com.dao.createIssue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.dao.BaseDao;
 import com.vo.createIssue.IssueFileVo;
-import com.vo.searchIssue.IssueTransactVo;
 
 public class IssueFileDao extends BaseDao {
 
+	static Logger log = Logger.getLogger(IssueFileDao.class.getName());  
 	public static void addIssueFile(IssueFileVo ifv)
 	{
 		
@@ -28,7 +29,7 @@ public class IssueFileDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx !=null)
 			{
 				tx.rollback();
@@ -55,7 +56,7 @@ public class IssueFileDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}
@@ -84,7 +85,7 @@ public class IssueFileDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

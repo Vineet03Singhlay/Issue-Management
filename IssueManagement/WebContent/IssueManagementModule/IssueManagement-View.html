@@ -1,0 +1,23 @@
+		<!-- second line header start -->
+		<div class="w3-container w3-green">
+			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
+				<a ui-sref="base.home">
+					<button class="w3-button fa fa-home w3-large"></button>
+				</a>
+			</div>
+			<div class="vl w3-left" style="height:52px; color:#ccc"></div>
+			<div class="w3-left w3-margin-top w3-margin-bottom" style="padding-left:4px;">
+				<h5 style="font-weight:bold">Issue Management</h5>
+			</div>
+
+			
+			<div class="vl w3-right" style="height:52px; color:#ccc"></div>
+			<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom" style="margin-top:14px;">
+				<button ng-click="vm.goToCreateIssue()" class="w3-button w3-hover-shadow w3-round-large" style="background-color:#ffffcc; color:black;">Create Issue</button>
+			</div>
+			<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom" style="margin-top:14px;">
+				<button ng-click="vm.goToSearchIssue()" class="w3-button w3-hover-shadow w3-round-large" style="background-color:#ffffcc; color:black;">Search Issue</button>
+			</div>
+		</div>
+		<!-- second line header end -->
+		<ui-view></ui-view>

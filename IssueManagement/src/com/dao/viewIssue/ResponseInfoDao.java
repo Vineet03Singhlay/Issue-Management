@@ -2,16 +2,17 @@ package com.dao.viewIssue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.dao.BaseDao;
-import com.vo.product.ProductVo;
 import com.vo.viewIssue.ResponseInfoVo;
 
 public class ResponseInfoDao extends BaseDao {
 	
+	static Logger log = Logger.getLogger(ResponseInfoDao.class.getName());  
 	public static void addResponse(ResponseInfoVo ri)
 	{
 		
@@ -29,7 +30,7 @@ public class ResponseInfoDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx !=null)
 			{
 				tx.rollback();
@@ -55,7 +56,7 @@ public class ResponseInfoDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}
@@ -80,7 +81,7 @@ public class ResponseInfoDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

@@ -11,10 +11,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.action.common.CommonIssueAction;
 import com.dao.dropdown.DropdownParentDao;
 import com.vo.dropdown.DropdownParentVo;
-
+import org.apache.log4j.Logger;
 
 public class DropdownParentAction extends CommonIssueAction {
 
+	static Logger log = Logger.getLogger(DropdownParentAction.class.getName());
     
 	public String getDropdownParent()
 	{	
@@ -26,13 +27,13 @@ public class DropdownParentAction extends CommonIssueAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		

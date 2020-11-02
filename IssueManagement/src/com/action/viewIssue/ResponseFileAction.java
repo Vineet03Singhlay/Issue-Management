@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -15,6 +16,8 @@ import com.vo.createIssue.IssueFileVo;
 import com.vo.viewIssue.ResponseFileVo;
 
 public class ResponseFileAction extends BaseAction {
+
+	static Logger log = Logger.getLogger(ResponseFileAction.class.getName());  
 
 	private String issueNumber;
 	private int responseId;
@@ -45,13 +48,13 @@ public class ResponseFileAction extends BaseAction {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setContentType("application/json");
 		PrintWriter out=response.getWriter();
-		System.out.println(mapper.writeValueAsString(res));
+		log.info(mapper.writeValueAsString(res));
 		out.print(mapper.writeValueAsString(res));
 		out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		return "";
 		
@@ -67,13 +70,13 @@ public class ResponseFileAction extends BaseAction {
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
-			System.out.println(mapper.writeValueAsString(res));
+			log.info(mapper.writeValueAsString(res));
 			out.print(mapper.writeValueAsString(res));
 			out.flush();
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 		}
 		
 		return "";

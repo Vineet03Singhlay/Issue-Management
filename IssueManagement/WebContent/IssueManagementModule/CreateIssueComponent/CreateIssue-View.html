@@ -1,0 +1,289 @@
+
+		<!-- second line header start -->
+		<div class="w3-container w3-green">
+			<div class="w3-left w3-margin-top w3-margin-bottom w3-border-white" style="padding-right:6px;">
+				<a ui-sref="base.home" >
+					<button class="w3-button fa fa-home w3-large"></button>
+				</a>
+			</div>
+			<div class="vl w3-left" style="height:52px; color:#ccc"></div>
+			<div class="w3-left w3-margin-top w3-margin-bottom" style="padding-left:4px;">
+				<h5 style="font-weight:bold">Create Issue</h5>
+			</div>
+
+			<div class="w3-right w3-margin-top w3-margin-left w3-margin-bottom">
+				<a ui-sref="base.home" >
+					<button class="w3-button w3-green w3-hover-shadow fa fa-mail-reply">&nbsp;Back</button>
+				</a>
+			</div>
+			<div class="vl w3-right" style="height:52px; color:#ccc"></div>
+			<div class="w3-right w3-margin-right w3-margin-top w3-margin-bottom" style="margin-top:14px;">
+				<button onclick="self.submit_form()" class="w3-button w3-orange w3-hover-shadow w3-round-large">Save</button>
+			</div>
+			
+		</div>
+		<!-- second line header end -->
+		
+		<!-- body start -->
+		
+		<div class="w3-row w3-padding-small" style="background-color:#f1f1f1;">
+		
+			<div class="w3-container w3-left w3-white w3-column w3-card" style="width:65%; margin:16px; min-height:620px;">
+				<h5 style="font-weight:bold">ISSUE INFORMATION</h5> 
+				<hr class="w3-black">
+				<form acton="">
+					<div >
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Issue Type</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.issueTypeOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.issueTypeValue" value="{{x.dropdownChildKey}}">{{x.dropdownChildValue}}</option>
+								</select>
+							</div>
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Issue Subtype</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.issueSubtypeOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.issueSubtypeValue" value="{{x.dropdownChildKey}}">{{x.dropdownChildValue}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Product</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.productOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.productValue" value="{{x.productId}}">{{x.productName}}</option>
+								</select>
+							</div>
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Supplier</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.supplierOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.supplierValue" value="{{x.supplierId}}">{{x.supplierName}}</option>
+								</select>
+							</div>
+						</div>
+						<!-- when issue type and subtype is chosen then ng-hide=false for model=workflow -->
+						<div class="w3-row w3-padding-small" ng-model="vm.workflow" ng-hide="true">
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Issue Workflow</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-threequarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:96.5%;" ng-model="vm.issueWorkflowOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.issueWorkflowValue" value="{{x}}">{{x}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5>Location Type</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.locationTypeOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.locationTypeValue" value="{{x.locationTypeId}}">{{x.locationTypeValue}}</option>
+								</select>
+							</div>
+							<div class="w3-quarter">
+								<label><h5>Location Name</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.locationNameOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.locationNameValue" value="{{x.locationId}}">{{x.locationValue}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5>Reported By</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<input type="text" class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.reportedBy">
+							</div>
+							<div class="w3-quarter">
+								<label><h5>Issue Date</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<input type="date" class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.issueDate">
+							</div>
+						</div>
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5>How Received?</h5></label>
+							</div>
+							<div class="w3-quarter">
+								<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.howReceivedOption">
+									<option value="" disabled selected></option>
+									<option ng-repeat="x in vm.howReceivedValue" value="{{x.dropdownChildKey}}">{{x.dropdownChildValue}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="w3-row w3-padding-small">
+							<div class="w3-quarter">
+								<label><h5 class="w3-left">Issue Description</h5><h5 class="w3-left" style="color:red;">*</h5></label>
+							</div>
+							<div class="w3-threequarter">
+								<textarea class="w3-border w3-margin-bottom" rows="3" style="width:96.5%;" ng-model="vm.issueDescription">
+								</textarea>
+							</div>
+						</div>
+					</div>
+					<!-- ng-hide = false for model=productLife when issue type is product quality and subtype is expired or short life -->
+					<div ng-switch="vm.issueSubtypeOption">
+						<div ng-switch-when="ISS001" >
+							<hr style="color:#eee">
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Condition</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.conditionOption">
+										<option value="" disabled selected></option>
+										<option ng-repeat="x in vm.conditionValue" value="{{x.dropdownChildKey}}">{{x.dropdownChildValue}}</option>
+									</select>
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Duration</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.durationValue">
+								</div>
+							</div>
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Duration Units</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<select class="w3-select w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.durationUnitOption">
+										<option value="" disabled selected></option>
+										<option ng-repeat="x in vm.durationUnitValue" value="{{x.dropdownChildKey}}">{{x.dropdownChildValue}}</option>
+									</select>
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Storage Temperature</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.storageTemperature">
+								</div>
+							</div>
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Humidity</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.humidityValue">
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Notes</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.notesValue">
+								</div>
+							</div>
+						</div>
+					<!-- ng-hide = false for model=productColor when issue type is product quality and subtype is color -->
+						<div ng-switch-when="ISS002">
+							<hr style="color:#eee">
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Taste</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.tasteValue">
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Flavor</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.flavorValue">
+								</div>
+							</div>
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Actual Color</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.actualColor">
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Expected Color</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.expectedColor">
+								</div>
+							</div>
+							
+						</div>
+					<!-- ng-hide = false for model=productConsistency when issue type is product quality and subtype is consistency -->
+						<div ng-switch-when="ISS003">
+							<hr style="color:#eee">
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Texture</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.textureValue">
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Size</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.sizeValue">
+								</div>
+							</div>
+							<div class="w3-row w3-padding-small">
+								<div class="w3-quarter">
+									<label><h5>Aroma</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.aromaValue">
+								</div>
+								<div class="w3-quarter">
+									<label><h5>Flavor</h5></label>
+								</div>
+								<div class="w3-quarter">
+									<input class="w3-input w3-border w3-margin-bottom" style="width:90%;" ng-model="vm.test.flavorValue">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+				</form>
+			</div>
+			
+			<div class="w3-container w3-left w3-white w3-column w3-card" style="width:30%; margin:16px; height:620px;">
+				
+				<h5 style="font-weight:bold">FILES</h5>
+					
+				<hr class="w3-black">
+				<div>
+					<label ng-click="vm.selectFile(event)" class="fa fa-file-o" for="createIssueFile"><h5 class="w3-hover-opacity" style="color:#06abba; display:inline;"> Attach Files</h5></label>
+					<!-- <input class="w3-left" style="display:none;" type="file" id="createIssueFile" ng-model="vm.issueFileName" multiple> -->
+					<h5 class="w3-right"><p style="display:inline;" id="documentCount"></p> Document(s) attached</h5>
+					<p class="w3-text-red">{{vm.errortext}}</p>
+					<p ng-repeat="x in vm.fileList"> {{x}}</p>
+				</div>
+				<div>
+					<ul class="w3-ul" id="issueFile">
+    					<!-- issue file(s) are shown here from js file what to be uploaded -->
+  					</ul>
+  					
+				</div>
+			</div>
+		
+		</div>
+		
+		<!-- body end -->

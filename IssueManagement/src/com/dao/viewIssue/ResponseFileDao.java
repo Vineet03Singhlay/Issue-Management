@@ -2,6 +2,7 @@ package com.dao.viewIssue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import com.vo.viewIssue.ResponseFileVo;
 
 public class ResponseFileDao extends BaseDao{
 	
+	static Logger log = Logger.getLogger(ResponseFileDao.class.getName());  
 	public static void addResponseFile(ResponseFileVo rfv)
 	{
 		
@@ -27,7 +29,7 @@ public class ResponseFileDao extends BaseDao{
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx !=null)
 			{
 				tx.rollback();
@@ -54,7 +56,7 @@ public class ResponseFileDao extends BaseDao{
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

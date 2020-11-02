@@ -2,6 +2,7 @@ package com.dao.searchIssue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import com.vo.searchIssue.SavedSearchesVo;
 
 public class SavedSearchesDao extends BaseDao {
 
+	static Logger log = Logger.getLogger(SavedSearchesDao.class.getName());  
 	public static void addSearchDetail(SavedSearchesVo ssv)
 	{
 		
@@ -27,7 +29,7 @@ public class SavedSearchesDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx !=null)
 			{
 				tx.rollback();
@@ -54,7 +56,7 @@ public class SavedSearchesDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}
@@ -84,7 +86,7 @@ public class SavedSearchesDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

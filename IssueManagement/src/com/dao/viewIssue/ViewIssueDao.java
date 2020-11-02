@@ -2,6 +2,7 @@ package com.dao.viewIssue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import com.vo.searchIssue.IssueTransactVo;
 
 public class ViewIssueDao extends BaseDao {
 	
+	static Logger log = Logger.getLogger(ViewIssueDao.class.getName());  
 	public static List<IssueTransactVo> getIssueListWithValues(String issueNumber)
 	{
 		List<IssueTransactVo> res=null;
@@ -30,7 +32,7 @@ public class ViewIssueDao extends BaseDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

@@ -2,6 +2,7 @@ package com.dao.location;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import com.vo.location.LocationTypeVo;
 
 public class LocationTypeDao extends CommonIssueDao {
 	
+	static Logger log = Logger.getLogger(LocationTypeDao.class.getName());  
 	public static List<LocationTypeVo> getLocationType()
 	{
 		List<LocationTypeVo> res=null;
@@ -29,7 +31,7 @@ public class LocationTypeDao extends CommonIssueDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			log.info(e);
 			if(tx != null) {
 				tx.rollback();
 			}

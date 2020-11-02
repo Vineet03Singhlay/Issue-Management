@@ -1,0 +1,217 @@
+	<div id="Information" class="tabcontent">
+		<div class="w3-container w3-left w3-white w3-column w3-card"
+			style="width: 65%; margin: 16px; min-height: 600px;">
+			<h5 style="font-weight: bold">ISSUE INFORMATION</h5>
+			<hr class="w3-black">
+
+			<div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">Location Type</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].locationTypeValue}}</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 class="w3-left">Location Name</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].locationValue}}</h5>
+					</div>
+				</div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">Product</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.concatDash(vm.viewIssueData[0].product,
+							vm.viewIssueData[0].productValue)}}</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 class="w3-left">Supplier</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.concatDash(vm.viewIssueData[0].supplier,
+							vm.viewIssueData[0].supplierValue)}}</h5>
+					</div>
+				</div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">Justified?</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].justified}}</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 class="w3-left">Justified Reason</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].justifiedReason}}</h5>
+					</div>
+				</div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">How Received?</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].howReceivedValue}}</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 class="w3-left">Issue Date</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].issueDate|
+							date:'dd MMM yyyy'}}</h5>
+					</div>
+				</div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">Responsible Party</h5>
+					</div>
+					<div class="w3-quarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].responsibleParty}}</h5>
+					</div>
+				</div>
+				<div class="w3-row w3-padding-small">
+					<div class="w3-quarter">
+						<h5 class="w3-left">Issue Description</h5>
+					</div>
+					<div class="w3-threequarter">
+						<h5 style="font-weight: bold;">{{vm.viewIssueData[0].issueDescription}}</h5>
+					</div>
+				</div>
+			</div>
+			<!-- ng-hide = false for model=productLife when issue type is product quality and subtype is expired or short life -->
+			<div ng-switch="vm.viewIssueData[0].issueSubtype">
+				<div ng-switch-when="ISS001">
+					<hr style="color: #eee">
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Condition</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].conditionValue}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Duration</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].duration}}</h5>
+						</div>
+					</div>
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Duration Units</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].durationUnitValue}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Storage Temperature</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].storageTemperature}}</h5>
+						</div>
+					</div>
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Humidity</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].humidity}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Notes</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].notes}}</h5>
+						</div>
+					</div>
+				</div>
+				<!-- ng-hide = false for model=productColor when issue type is product quality and subtype is color -->
+				<div ng-switch-when="ISS002">
+					<hr style="color: #eee">
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Taste</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].taste}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Flavor</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].flavor}}</h5>
+						</div>
+					</div>
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Actual Color</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].actualColor}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Expected Color</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].expectedColor}}</h5>
+						</div>
+					</div>
+				</div>
+				<!-- ng-hide = false for model=productConsistency when issue type is product quality and subtype is consistency -->
+				<div ng-switch-when="ISS003">
+					<hr style="color: #eee">
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Texture</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].texture}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Size</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].productSize}}</h5>
+						</div>
+					</div>
+					<div class="w3-row w3-padding-small">
+						<div class="w3-quarter">
+							<h5 class="w3-left">Aroma</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].aroma}}</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 class="w3-left">Flavor</h5>
+						</div>
+						<div class="w3-quarter">
+							<h5 style="font-weight: bold;">{{vm.viewIssueData[0].flavor}}</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="w3-container w3-left w3-white w3-column w3-card"
+			style="width: 30%; margin: 16px; height: 600px;">
+			<div>
+				<h5 style="font-weight: bold">FILES</h5>
+				<hr class="w3-black">
+				<h5>{{vm.fileListLength}} Document(s) attached</h5>
+			</div>
+			<div>
+				<ul class="w3-ul">
+					<li ng-repeat="x in vm.viewFileList">{{x.fileName}}<a
+						href="http://localhost:8088/IssueManagement/downloadIssueFile?fileId={{x.id}}"
+						download><span style="cursor: pointer;"
+							class="w3-right w3-margin-right fa fa-download"></span></a></li>
+
+				</ul>
+
+			</div>
+		</div>
+
+	</div>
